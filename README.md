@@ -12,7 +12,9 @@ o options for initial_launch, max_run_times, logger selection/delegation
 
 o fix for default logger hanlder creating duplicated multiple handler
 
-o fix sequential join operation and auto-terminates on no more alive-jobs
+o fix sequential join operation 
+
+o auto-terminates on no more alive-jobs
 
 ## Installation
 ```sh
