@@ -16,7 +16,7 @@ o fix sequential join operation and auto-terminates on no more alive-jobs
 
 ## Installation
 ```sh
-# pip install timeloop
+# pip install git+https://github.com/dev1145/timeloop.git
 ```
 
 ## Writing jobs
