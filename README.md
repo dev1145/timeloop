@@ -7,8 +7,11 @@ Inspired by this blog [`here`](https://www.g-loaded.eu/2016/11/24/how-to-termina
 
 ## this fork version fixes:
 o option to avoid sheduling time drift by job execution delay
+
 o options for initial_launch, max_run_times, logger selection/delegation
+
 o fix for default logger hanlder creating duplicated multiple handler
+
 o fix sequential join operation and auto-terminates on no more alive-jobs
 
 ## Installation
