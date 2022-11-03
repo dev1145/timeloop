@@ -5,9 +5,15 @@ Each job runs on a separate thread and when the service is shut down, it waits t
 
 Inspired by this blog [`here`](https://www.g-loaded.eu/2016/11/24/how-to-terminate-running-python-threads-using-signals/)
 
+## this fork version fixes:
+o option to avoid sheduling time drift by job execution delay
+o options for initial_launch, max_run_times, logger selection/delegation
+o fix for default logger hanlder creating duplicated multiple handler
+o fix sequential join operation and auto-terminates on no more alive-jobs
+
 ## Installation
 ```sh
-pip install timeloop
+# pip install timeloop
 ```
 
 ## Writing jobs
@@ -23,12 +29,12 @@ tl = Timeloop()
 def sample_job_every_2s():
     print "2s job current time : {}".format(time.ctime())
 
-@tl.job(interval=timedelta(seconds=5))
+@tl.job(interval=timedelta(seconds=5), allow_drift=False, initial_launch=False, max_run_times=None) # with default option values
 def sample_job_every_5s():
     print "5s job current time : {}".format(time.ctime())
 
 
-@tl.job(interval=timedelta(seconds=10))
+@tl.job(interval=timedelta(seconds=10), allow_drift=True, initial_launch=True, max_run_times=2)
 def sample_job_every_10s():
     print "10s job current time : {}".format(time.ctime())
 ```
@@ -55,7 +61,4 @@ Doing this will automatically shut down the jobs gracefully when the program is 
 tl.start(block=True)
 ```
 
-## Author
-* **Sankalp Jonna**
-
-Email me with any queries: [sankalpjonna@gmail.com](sankalpjonna@gmail.com).
+based on code forked from sankalpjonn/timeloop
