@@ -23,12 +23,13 @@ o auto-terminates on no more alive-jobs
 
 ## Writing jobs
 ```python
-import time
+import time, logging
 
 from timeloop import Timeloop
 from datetime import timedelta
 
-tl = Timeloop()
+tl = Timeloop(add_logger=get_logger('time_loop') ) # or add_logger='time_loop'
+tl.logger.setLevel( logging.INFO-1)
 
 @tl.job(interval=timedelta(seconds=2))
 def sample_job_every_2s():
