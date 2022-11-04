@@ -39,6 +39,8 @@ class Job(Thread):
         #self.join()
 
     def run(self):
+        if type(self.max_run_times)==int and self.max_run_times <= 0 : 
+            return
         next_wait_sec = self.interval.total_seconds()
         next_time_point_sec = time.time() + self.interval.total_seconds()
         while (self.initial_launch and (self.max_run_times==None or type(self.max_run_times)==int and self.max_run_times > 0 )
