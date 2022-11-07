@@ -70,7 +70,7 @@ class Timeloop():
                 logger=add_logger
             else :
                 logger = logging.getLogger('timeloop' if type(add_logger) != str else add_logger)
-            if not len(logger.handlers):
+            if not(logger.handlers or logger.hasHandlers() ): #hasHandlers check logging hierarcy by dot(.)
                 ch = logging.StreamHandler(sys.stdout)
                 ch.setLevel(logging.INFO)
                 formatter = logging.Formatter('[%(asctime)s] [%(name)s] [%(levelname)s] %(message)s')
